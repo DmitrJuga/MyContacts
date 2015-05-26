@@ -39,7 +39,6 @@
         [contact setValue:@"+7 933 555-44-33" forKey:ATT_PHONE];
         [contact setValue:@"ivanov@mail.ru" forKey:ATT_EMAIL];
         [contact setValue:@"руссо туристо!" forKey:ATT_STATUS];
-        [contact setValue:nil forKey:ATT_IMAGE_DATA];
         [coreData save];
     }
     
