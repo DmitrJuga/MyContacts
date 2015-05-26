@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  CustomCell.h
 //  myContacts
 //
 //  Created by DmitrJuga on 25.05.15.
@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CoreDataHelper.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface CustomCell : UITableViewCell
 
-@property (strong, nonatomic) UIWindow *window;
+- (void)setupCellForData:(NSManagedObject *)contact;
 
 @end
-

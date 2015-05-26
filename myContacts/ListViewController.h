@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  ListViewController.h
 //  myContacts
 //
 //  Created by DmitrJuga on 25.05.15.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ListViewController : UIViewController <UITableViewDataSource>
 
 
 @end
