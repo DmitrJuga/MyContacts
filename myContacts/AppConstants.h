@@ -4,7 +4,7 @@
 //
 //  Created by DmitrJuga on 25.05.15.
 //  Copyright (c) 2015 Dmitriy Dolotenko. All rights reserved.
-//
+
 
 // Model Entities Names
 #define     ENTITY_NAME_CONTACT     @"Contact"
