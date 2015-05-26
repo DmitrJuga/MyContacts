@@ -8,13 +8,15 @@
 
 #import "CoreDataHelper.h"
 
+@interface CoreDataHelper()
+
+@property (strong, nonatomic) NSManagedObjectModel *model;
+@property (strong, nonatomic) NSPersistentStoreCoordinator *coordinator;
+@property (strong, nonatomic) NSManagedObjectContext *context;
+
+@end
 
 @implementation CoreDataHelper
-
-@synthesize model = _model;
-@synthesize coordinator = _coordinator;
-@synthesize context = _context;
-
 
 // метод класса, возвращающий синглтон
 + (CoreDataHelper *)sharedInstance {

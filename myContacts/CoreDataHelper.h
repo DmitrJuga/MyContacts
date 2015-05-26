@@ -15,10 +15,6 @@
 
 @interface CoreDataHelper : NSObject
 
-@property (readonly, strong, nonatomic) NSManagedObjectModel *model;
-@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *coordinator;
-@property (readonly, strong, nonatomic) NSManagedObjectContext *context;
-
 + (CoreDataHelper *)sharedInstance;
 - (void)save;
 
