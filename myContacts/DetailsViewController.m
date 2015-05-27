@@ -64,7 +64,7 @@
         self.email.textColor = [UIColor darkGrayColor];
         self.status.textColor = [UIColor darkGrayColor];
         
-        NSData *imageData = [self.contact valueForKey:ATT_IMAGE_DATA];
+        NSData *imageData = [self.contact valueForKey:ATT_IMAGE];
         if (imageData) {
             self.image = [UIImage imageWithData:imageData];
             self.imgView.image = self.image;
@@ -98,7 +98,9 @@
         UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Пустое поле"
                                                                         message:msg
                                                                  preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+        [alert addAction:[UIAlertAction actionWithTitle:@"OK"
+                                                  style:UIAlertActionStyleCancel
+                                                handler:nil]];
         [self presentViewController:alert animated:YES completion:nil];
     } else {
         // сохраняем
@@ -108,25 +110,29 @@
         [contact setValue:self.phone.text forKey:ATT_PHONE];
         [contact setValue:self.email.text forKey:ATT_EMAIL];
         [contact setValue:self.status.text forKey:ATT_STATUS];
-        [contact setValue:UIImagePNGRepresentation(self.image) forKey:ATT_IMAGE_DATA];
+        [contact setValue:UIImagePNGRepresentation(self.image) forKey:ATT_IMAGE];
         [self.coreData save];
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
 
 // удаление текущего контакта
-- (void)deleteContact{
+- (void)deleteContact {
     // предупреждаем пользователя
-    UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Удаление"
-                                                                    message:@"Контакт будет удален безвозвратно!"
-                                                             preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:@"Удалить" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Удаление"
+                                                                   message:@"Контакт будет удален безвозвратно!"
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"Удалить"
+                                              style:UIAlertActionStyleDestructive
+                                            handler:^(UIAlertAction *action) {
         // удаляем
         [self.coreData deleteObject:self.contact];
         [self.coreData save];
         [self.navigationController popViewControllerAnimated:YES];
     }]];
-    [alert addAction:[UIAlertAction actionWithTitle:@"Отмена" style:UIAlertActionStyleCancel handler:nil]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"Отмена"
+                                              style:UIAlertActionStyleCancel
+                                            handler:nil]];
     [self presentViewController:alert animated:YES completion:nil];
 }
 
@@ -134,6 +140,7 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     CGPoint touchPoint = [[touches anyObject] locationInView:self.view];
     UIView *touchView = [self.view hitTest:touchPoint withEvent:event];
+    
     if ([touchView isEqual:self.view]) {
         for (UIView *view in self.view.subviews) {
             if (view.isFirstResponder) {
@@ -142,6 +149,7 @@
         }
     }
 }
+
 
 #pragma mark - UITextFieldDelegate
 
@@ -159,18 +167,6 @@
         [self.status resignFirstResponder];
     }
     return YES;
-}
-
-
-#pragma mark - UIImagePickerControllerDelegate
-
-// выбор картинки из PhotoLibrary
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    self.image = [info valueForKey:UIImagePickerControllerOriginalImage];
-    if (self.image) {
-        self.imgView.image = self.image;
-    }
-    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 
@@ -195,5 +191,18 @@
     [self presentViewController:picker animated:YES completion:nil];
 }
 
+
+#pragma mark - UIImagePickerControllerDelegate
+
+// выбор картинки из PhotoLibrary
+- (void)imagePickerController:(UIImagePickerController *)picker
+didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    self.image = [info valueForKey:UIImagePickerControllerOriginalImage];
+    if (self.image) {
+        self.imgView.image = self.image;
+    }
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end

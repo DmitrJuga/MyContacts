@@ -15,7 +15,7 @@
 #define     ATT_PHONE           @"phone"
 #define     ATT_EMAIL           @"email"
 #define     ATT_STATUS          @"status"
-#define     ATT_IMAGE_DATA      @"imageData"
+#define     ATT_IMAGE           @"imageData"
 
 // StoryBoard IDs
 #define     CELL_LIST       @"ContactCell"

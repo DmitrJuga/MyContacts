@@ -15,7 +15,7 @@
 
 @interface CoreDataHelper : NSObject
 
-+ (CoreDataHelper *)sharedInstance;
++ (instancetype)sharedInstance;
 - (void)save;
 
 - (NSManagedObject *)addObjectForEntity:(NSString *)entityName;

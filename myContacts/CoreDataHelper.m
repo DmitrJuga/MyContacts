@@ -18,35 +18,26 @@
 
 @implementation CoreDataHelper
 
-// метод класса, возвращающий синглтон
-+ (CoreDataHelper *)sharedInstance {
-    
-    static CoreDataHelper *singleton = nil;
-    
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        singleton = [[self alloc] init];
-    });
-    
-    return singleton;
-}
-
 // инициализация стека CoreData
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
         NSError *error = nil;
         
         // ManagedObjectModel
-        NSURL *modelURL = [[NSBundle mainBundle] URLForResource:MODEL_FILE_NAME withExtension:MODEL_FILE_EXT];
+        NSURL *modelURL = [[NSBundle mainBundle] URLForResource:MODEL_FILE_NAME
+                                                  withExtension:MODEL_FILE_EXT];
         _model = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
         
         // PersistentStoreCoordinator
-        NSURL *docsURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+        NSURL *docsURL = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask].lastObject;
         NSURL *storeURL = [docsURL URLByAppendingPathComponent:STORE_FILE_NAME];
         _coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:_model];
-        if (![_coordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+        if (![_coordinator addPersistentStoreWithType:NSSQLiteStoreType
+                                        configuration:nil
+                                                  URL:storeURL
+                                              options:nil
+                                                error:&error]) {
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             abort();
         }
@@ -54,11 +45,21 @@
         // ManagedObjectContext
         _context = [[NSManagedObjectContext alloc] init];
         _context.persistentStoreCoordinator = _coordinator;
-        
     }
     return self;
 }
 
+// метод класса, возвращающий синглтон
++ (instancetype)sharedInstance {
+    static id singleton = nil;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        singleton = [[[self class] alloc] init];
+    });
+    
+    return singleton;
+}
 
 // сохранение контекста
 - (void)save {
@@ -72,7 +73,8 @@
 
 // создание нового объекта для указанного entity
 - (NSManagedObject *)addObjectForEntity:(NSString *)entityName {
-    return [NSEntityDescription insertNewObjectForEntityForName:entityName inManagedObjectContext:self.context];
+    return [NSEntityDescription insertNewObjectForEntityForName:entityName
+                                         inManagedObjectContext:self.context];
 }
 
 // получение всех объектов для указанного entity

@@ -30,7 +30,7 @@
         [contact setValue:@"+7 918 464-02-63" forKey:ATT_PHONE];
         [contact setValue:@"dmitrjuga@gmail.com" forKey:ATT_EMAIL];
         [contact setValue:@"I wish I can fly ;)" forKey:ATT_STATUS];
-        [contact setValue:UIImagePNGRepresentation([UIImage imageNamed:@"me"]) forKey:ATT_IMAGE_DATA];
+        [contact setValue:UIImagePNGRepresentation([UIImage imageNamed:@"me"]) forKey:ATT_IMAGE];
         [coreData save];
 
         contact = [coreData addObjectForEntity:ENTITY_NAME_CONTACT];

@@ -49,7 +49,7 @@
 // возвращаем ячейку
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_LIST forIndexPath:indexPath];
-    NSManagedObject *contact = [self.arrayContacts objectAtIndex:indexPath.row];
+    NSManagedObject *contact = self.arrayContacts[indexPath.row];
     [cell setupCellForData:contact];
     return cell;
 }
@@ -60,9 +60,12 @@
 }
 
 // удаление записи
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView
+    commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+     forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSManagedObject *contact = [self.arrayContacts objectAtIndex:indexPath.row];
+        NSManagedObject *contact = self.arrayContacts[indexPath.row];
         [self.coreData deleteObject:contact];
         [self.coreData save];
         [self.arrayContacts removeObjectAtIndex:indexPath.row];
@@ -79,7 +82,7 @@
     if ([segue.identifier isEqualToString:SEGUE_ADD]) {
         vc.contact = nil;
     } else if ([segue.identifier isEqualToString:SEGUE_DETAILS]) {
-        vc.contact = [self.arrayContacts objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+        vc.contact = self.arrayContacts[self.tableView.indexPathForSelectedRow.row];
     }
 }
 
