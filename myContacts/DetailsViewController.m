@@ -6,8 +6,9 @@
 //  Copyright (c) 2015 Dmitriy Dolotenko. All rights reserved.
 
 
-#import "DetailsViewController.h"
 #import "AppConstants.h"
+#import "Utils.h"
+#import "DetailsViewController.h"
 
 @interface DetailsViewController()
 
@@ -75,45 +76,52 @@
         [self.bottomButton setTitle:@"Удалить" forState:UIControlStateNormal];
     }
     self.bottomButton.layer.cornerRadius = 8;
+
+    // оверлеи для предупреждения о невалидности полей
+    self.lastName.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"error"]];;
+    self.lastName.leftViewMode = UITextFieldViewModeNever;
+    self.firstName.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"error"]];;
+    self.firstName.leftViewMode = UITextFieldViewModeNever;
+    self.email.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"error"]];;
+    self.email.leftViewMode = UITextFieldViewModeNever;
 }
 
 // сохранение нового контакта
 - (void)saveContact {
-    // проверка на незаполненные поля
-    UITextField *emptyField = nil;
+    // валидация полей
+    NSString *msg = @"Необходимо заполнить поле: %@";
+    UITextField *invalidField;
     if (!self.lastName.hasText) {
-        emptyField = self.lastName;
+        invalidField = self.lastName;
     } else if (!self.firstName.hasText) {
-        emptyField = self.firstName;
-    } else if (!self.phone.hasText) {
-        emptyField = self.phone;
-    } else if (!self.email.hasText) {
-        emptyField = self.email;
-    } else if (!self.status.hasText) {
-        emptyField = self.status;
+        invalidField = self.firstName;
+    } else if (self.email.hasText && ![Utils validEmail:self.email.text]) {
+        invalidField = self.email;
+        msg = @"Некорректный формат %@";
     }
     // предупреждаем пользователя
-    if (emptyField) {
-        NSString *msg = [NSString stringWithFormat:@"Необходимо заполнить поле: %@", emptyField.placeholder];
-        UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Пустое поле"
-                                                                        message:msg
-                                                                 preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:@"OK"
-                                                  style:UIAlertActionStyleCancel
-                                                handler:nil]];
-        [self presentViewController:alert animated:YES completion:nil];
-    } else {
-        // сохраняем
-        NSManagedObject *contact = [self.coreData addObjectForEntity:ENTITY_NAME_CONTACT];
-        [contact setValue:self.lastName.text forKey:ATT_LAST_NAME];
-        [contact setValue:self.firstName.text forKey:ATT_FIRST_NAME];
-        [contact setValue:self.phone.text forKey:ATT_PHONE];
-        [contact setValue:self.email.text forKey:ATT_EMAIL];
-        [contact setValue:self.status.text forKey:ATT_STATUS];
-        [contact setValue:UIImagePNGRepresentation(self.image) forKey:ATT_IMAGE];
-        [self.coreData save];
-        [self.navigationController popViewControllerAnimated:YES];
+    if (invalidField) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Внимание!"
+                                                                       message:[NSString stringWithFormat:msg, invalidField.placeholder]
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+        [self presentViewController:alert animated:YES completion:^{
+            [invalidField becomeFirstResponder];
+        }];
+        return;
     }
+    
+    // сохраняем
+    NSManagedObject *contact = [self.coreData addObjectForEntity:ENTITY_NAME_CONTACT];
+    [contact setValue:self.lastName.text forKey:ATT_LAST_NAME];
+    [contact setValue:self.firstName.text forKey:ATT_FIRST_NAME];
+    [contact setValue:self.phone.text forKey:ATT_PHONE];
+    [contact setValue:self.email.text forKey:ATT_EMAIL];
+    [contact setValue:self.status.text forKey:ATT_STATUS];
+    [contact setValue:UIImagePNGRepresentation(self.image) forKey:ATT_IMAGE];
+    [self.coreData save];
+
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 // удаление текущего контакта
@@ -130,9 +138,7 @@
         [self.coreData save];
         [self.navigationController popViewControllerAnimated:YES];
     }]];
-    [alert addAction:[UIAlertAction actionWithTitle:@"Отмена"
-                                              style:UIAlertActionStyleCancel
-                                            handler:nil]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"Отмена" style:UIAlertActionStyleCancel handler:nil]];
     [self presentViewController:alert animated:YES completion:nil];
 }
 
@@ -168,6 +174,43 @@
     }
     return YES;
 }
+
+// валидация полей и установка предупреждений
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    if (([textField isEqual:self.lastName] && !textField.hasText) ||
+        ([textField isEqual:self.firstName] && !textField.hasText) ||
+        ([textField isEqual:self.email] && textField.hasText && ![Utils validEmail:textField.text])) {
+            textField.leftViewMode = UITextFieldViewModeUnlessEditing;
+        textField.leftViewMode = UITextFieldViewModeAlways;
+    }
+    return YES;
+}
+
+// сброс предупреждений
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    textField.leftViewMode = UITextFieldViewModeNever;
+}
+
+// форматирование ввода
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if ([textField isEqual:self.phone]) {
+        // форматирование номера телефона
+        NSError *error = nil;
+        NSString *phString = [NSString stringWithFormat:@"%@%@", textField.text, string];
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"[\\s-\\(\\)]"
+                                                                               options:NSRegularExpressionCaseInsensitive
+                                                                                 error:&error];
+        phString = [regex stringByReplacingMatchesInString:phString
+                                                   options:0
+                                                     range:NSMakeRange(0, phString.length)
+                                                    withTemplate:@""];
+        phString = (range.length == 1) ? [phString substringToIndex:phString.length - 1] : phString;
+        textField.text = [Utils formatPhoneNumber:phString];
+        return NO;
+    }
+    return YES;
+}
+
 
 
 #pragma mark - Actions Handlers

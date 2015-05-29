@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D80D7D41B19079A00EA724A /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D80D7D31B19079A00EA724A /* Utils.m */; };
 		1DF7C8AF1B13B1E200529494 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7C8AE1B13B1E200529494 /* main.m */; };
 		1DF7C8B21B13B1E200529494 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7C8B11B13B1E200529494 /* AppDelegate.m */; };
 		1DF7C8B81B13B1E200529494 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7C8B71B13B1E200529494 /* ListViewController.m */; };
@@ -20,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D80D7D21B19079A00EA724A /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = MyContacts/Utils.h; sourceTree = SOURCE_ROOT; };
+		1D80D7D31B19079A00EA724A /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = MyContacts/Utils.m; sourceTree = SOURCE_ROOT; };
 		1DF7C8A91B13B1E200529494 /* Мои контакты.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Мои контакты.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF7C8AD1B13B1E200529494 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DF7C8AE1B13B1E200529494 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -71,6 +74,8 @@
 			isa = PBXGroup;
 			children = (
 				1DF7C8DC1B13C1D200529494 /* AppConstants.h */,
+				1D80D7D21B19079A00EA724A /* Utils.h */,
+				1D80D7D31B19079A00EA724A /* Utils.m */,
 				1DF7C8B01B13B1E200529494 /* AppDelegate.h */,
 				1DF7C8B11B13B1E200529494 /* AppDelegate.m */,
 				1DF7C8E01B13C33100529494 /* CoreDataHelper */,
@@ -196,6 +201,7 @@
 				1DF7C8E31B13EF2800529494 /* CoreDataHelper.m in Sources */,
 				1DF7C8B21B13B1E200529494 /* AppDelegate.m in Sources */,
 				1DF7C8D71B13B9CA00529494 /* CustomCell.m in Sources */,
+				1D80D7D41B19079A00EA724A /* Utils.m in Sources */,
 				1DF7C8EA1B1405E100529494 /* Model.xcdatamodeld in Sources */,
 				1DF7C8E61B13F93100529494 /* DetailsViewController.m in Sources */,
 				1DF7C8B81B13B1E200529494 /* ListViewController.m in Sources */,
