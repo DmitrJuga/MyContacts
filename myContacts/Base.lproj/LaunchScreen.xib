@@ -17,20 +17,20 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Контакты" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Мои контакты" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
                     <rect key="frame" x="20" y="51" width="441" height="43"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="моя записная книжка" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LB8-oy-gHj">
-                    <rect key="frame" x="135" y="102" width="210" height="26"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="простая записная книжка" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LB8-oy-gHj">
+                    <rect key="frame" x="126" y="102" width="230" height="23"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notebook" translatesAutoresizingMaskIntoConstraints="NO" id="iKh-o2-VSc">
-                    <rect key="frame" x="115" y="136" width="250" height="247"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MyContacts" translatesAutoresizingMaskIntoConstraints="NO" id="iKh-o2-VSc">
+                    <rect key="frame" x="115" y="142" width="250" height="247"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="247" id="84V-Pk-9c8"/>
                         <constraint firstAttribute="width" constant="250" id="NQE-IJ-amb"/>
@@ -47,7 +47,7 @@
                 <constraint firstItem="kId-c2-rCX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="fvb-Df-36g"/>
                 <constraint firstAttribute="centerX" secondItem="iKh-o2-VSc" secondAttribute="centerX" id="m8F-bB-rUH"/>
                 <constraint firstItem="LB8-oy-gHj" firstAttribute="centerX" secondItem="kId-c2-rCX" secondAttribute="centerX" id="to0-MW-Ulp"/>
-                <constraint firstItem="iKh-o2-VSc" firstAttribute="top" secondItem="kId-c2-rCX" secondAttribute="bottom" constant="42" id="yjc-Px-2D0"/>
+                <constraint firstItem="iKh-o2-VSc" firstAttribute="top" secondItem="kId-c2-rCX" secondAttribute="bottom" constant="48" id="yjc-Px-2D0"/>
                 <constraint firstItem="LB8-oy-gHj" firstAttribute="top" secondItem="kId-c2-rCX" secondAttribute="bottom" constant="8" symbolic="YES" id="zYU-dz-a1B"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
@@ -56,6 +56,6 @@
         </view>
     </objects>
     <resources>
-        <image name="notebook" width="626" height="626"/>
+        <image name="MyContacts" width="1024" height="1024"/>
     </resources>
 </document>

@@ -166,9 +166,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1DF7C8A81B13B1E200529494 /* myContacts */ = {
+		1DF7C8A81B13B1E200529494 /* Мои контакты */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1DF7C8CF1B13B1E300529494 /* Build configuration list for PBXNativeTarget "myContacts" */;
+			buildConfigurationList = 1DF7C8CF1B13B1E300529494 /* Build configuration list for PBXNativeTarget "Мои контакты" */;
 			buildPhases = (
 				1DF7C8A51B13B1E200529494 /* Sources */,
 				1DF7C8A61B13B1E200529494 /* Frameworks */,
@@ -178,7 +178,7 @@
 			);
 			dependencies = (
 			);
-			name = myContacts;
+			name = "Мои контакты";
 			productName = myContacts;
 			productReference = 1DF7C8A91B13B1E200529494 /* myContacts.app */;
 			productType = "com.apple.product-type.application";
@@ -232,7 +232,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1DF7C8A81B13B1E200529494 /* myContacts */,
+				1DF7C8A81B13B1E200529494 /* Мои контакты */,
 				1DF7C8C41B13B1E300529494 /* myContactsTests */,
 			);
 		};
@@ -286,7 +286,7 @@
 /* Begin PBXTargetDependency section */
 		1DF7C8C71B13B1E300529494 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 1DF7C8A81B13B1E200529494 /* myContacts */;
+			target = 1DF7C8A81B13B1E200529494 /* Мои контакты */;
 			targetProxy = 1DF7C8C61B13B1E300529494 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -457,13 +457,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1DF7C8CF1B13B1E300529494 /* Build configuration list for PBXNativeTarget "myContacts" */ = {
+		1DF7C8CF1B13B1E300529494 /* Build configuration list for PBXNativeTarget "Мои контакты" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1DF7C8D01B13B1E300529494 /* Debug */,
 				1DF7C8D11B13B1E300529494 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1DF7C8D21B13B1E300529494 /* Build configuration list for PBXNativeTarget "myContactsTests" */ = {
 			isa = XCConfigurationList;
@@ -472,6 +473,7 @@
 				1DF7C8D41B13B1E300529494 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
