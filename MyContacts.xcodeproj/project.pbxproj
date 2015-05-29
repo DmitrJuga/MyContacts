@@ -20,7 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1DF7C8A91B13B1E200529494 /* myContacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myContacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF7C8A91B13B1E200529494 /* Мои контакты.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Мои контакты.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF7C8AD1B13B1E200529494 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DF7C8AE1B13B1E200529494 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1DF7C8B01B13B1E200529494 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -62,7 +62,7 @@
 		1DF7C8AA1B13B1E200529494 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1DF7C8A91B13B1E200529494 /* myContacts.app */,
+				1DF7C8A91B13B1E200529494 /* Мои контакты.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -140,7 +140,7 @@
 			);
 			name = "Мои контакты";
 			productName = myContacts;
-			productReference = 1DF7C8A91B13B1E200529494 /* myContacts.app */;
+			productReference = 1DF7C8A91B13B1E200529494 /* Мои контакты.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
