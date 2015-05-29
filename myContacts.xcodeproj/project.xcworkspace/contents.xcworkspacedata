@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:myContacts.xcodeproj">
+      location = "self:/Users/dmitrjuga/Library/Mobile Documents/com~apple~CloudDocs/MyProjects/_ObjC1/myContacts/MyContacts.xcodeproj">
    </FileRef>
 </Workspace>
