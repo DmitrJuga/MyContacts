@@ -6,8 +6,9 @@
 //  Copyright (c) 2015 Dmitriy Dolotenko. All rights reserved.
 
 
-#import "DetailsViewController.h"
 #import "AppConstants.h"
+#import "Utils.h"
+#import "DetailsViewController.h"
 
 @interface DetailsViewController()
 
@@ -94,7 +95,7 @@
         invalidField = self.lastName;
     } else if (!self.firstName.hasText) {
         invalidField = self.firstName;
-    } else if (self.email.hasText && ![self validEmail:self.email.text]) {
+    } else if (self.email.hasText && ![Utils validEmail:self.email.text]) {
         invalidField = self.email;
         msg = @"Некорректный формат %@";
     }
@@ -155,21 +156,6 @@
     }
 }
 
-// валидация e-mail
-- (BOOL)validEmail:(NSString*)emailString {
-        NSString *regExPattern = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
-        NSRegularExpression *regEx = [[NSRegularExpression alloc] initWithPattern:regExPattern
-                                                                          options:NSRegularExpressionCaseInsensitive
-                                                                            error:nil];
-        NSUInteger regExMatches = [regEx numberOfMatchesInString:emailString
-                                                         options:0
-                                                           range:NSMakeRange(0, emailString.length)];
-        if (regExMatches == 0) {
-            return NO;
-        } else {
-            return YES;
-        }
-}
 
 #pragma mark - UITextFieldDelegate
 
@@ -193,7 +179,7 @@
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
     if (([textField isEqual:self.lastName] && !textField.hasText) ||
         ([textField isEqual:self.firstName] && !textField.hasText) ||
-        ([textField isEqual:self.email] && textField.hasText && ![self validEmail:textField.text])) {
+        ([textField isEqual:self.email] && textField.hasText && ![Utils validEmail:textField.text])) {
             textField.leftViewMode = UITextFieldViewModeUnlessEditing;
         textField.leftViewMode = UITextFieldViewModeAlways;
     }
@@ -204,6 +190,27 @@
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     textField.leftViewMode = UITextFieldViewModeNever;
 }
+
+// форматирование ввода
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if ([textField isEqual:self.phone]) {
+        // форматирование номера телефона
+        NSError *error = nil;
+        NSString *phString = [NSString stringWithFormat:@"%@%@", textField.text, string];
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"[\\s-\\(\\)]"
+                                                                               options:NSRegularExpressionCaseInsensitive
+                                                                                 error:&error];
+        phString = [regex stringByReplacingMatchesInString:phString
+                                                   options:0
+                                                     range:NSMakeRange(0, phString.length)
+                                                    withTemplate:@""];
+        phString = (range.length == 1) ? [phString substringToIndex:phString.length - 1] : phString;
+        textField.text = [Utils formatPhoneNumber:phString];
+        return NO;
+    }
+    return YES;
+}
+
 
 
 #pragma mark - Actions Handlers
