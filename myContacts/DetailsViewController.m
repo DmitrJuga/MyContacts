@@ -23,7 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *imageChangeButton;
 @property (weak, nonatomic) IBOutlet UIButton *imageViewButton;
 
-@property (strong, nonatomic) IBOutlet UIImage *image;
+@property (strong, nonatomic) UIImage *image;
 @property (strong, nonatomic) CoreDataHelper *coreData;
 
 @end
@@ -34,6 +34,11 @@
     [super viewDidLoad];
     
     self.coreData = [CoreDataHelper sharedInstance];
+    
+    // обработчик нажатий (чтобы убирать клавиатуру при нажатии вне полей)
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHandler:)];
+    [self.view addGestureRecognizer:tap];
+    
     [self setUI];
 }
 
@@ -147,20 +152,6 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-// убрать клавиатуру при нажатии вне полей
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    CGPoint touchPoint = [[touches anyObject] locationInView:self.view];
-    UIView *touchView = [self.view hitTest:touchPoint withEvent:event];
-    
-    if ([touchView isEqual:self.view]) {
-        for (UIView *view in self.view.subviews) {
-            if (view.isFirstResponder) {
-                [view resignFirstResponder];
-            }
-        }
-    }
-}
-
 
 #pragma mark - UITextFieldDelegate
 
@@ -217,7 +208,6 @@
 }
 
 
-
 #pragma mark - Actions Handlers
 
 // обработчик нажатия нижней кнопки
@@ -248,6 +238,14 @@
     [self presentViewController:picker animated:YES completion:nil];
 }
 
+// обработчик нажатия - убрать клавиатуру при нажатии вне полей
+- (IBAction)tapHandler:(id)sender {
+    [self.lastName resignFirstResponder];
+    [self.firstName resignFirstResponder];
+    [self.phone resignFirstResponder];
+    [self.email resignFirstResponder];
+    [self.status resignFirstResponder];
+}
 
 #pragma mark - UIImagePickerControllerDelegate
 

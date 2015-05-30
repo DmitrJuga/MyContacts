@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CoreDataHelper.h"
 
-@interface DetailsViewController : UIViewController <UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface DetailsViewController : UITableViewController <UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (strong, nonatomic) NSManagedObject *contact;
 
