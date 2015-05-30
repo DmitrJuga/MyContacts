@@ -23,9 +23,7 @@
 // Заполнение кастомной ячейки
 - (void)setupCellForData:(NSManagedObject *)contact {
     NSData *imageData = [contact valueForKey:ATT_IMAGE];
-    if (imageData) {
-        self.imgView.image = [UIImage imageWithData:imageData];
-    }
+    self.imgView.image = (imageData) ? [UIImage imageWithData:imageData] : [UIImage imageNamed:@"dummy"];
     self.lastName.text = [contact valueForKey:ATT_LAST_NAME];
     self.firstName.text = [contact valueForKey:ATT_FIRST_NAME];
     self.status.text = [contact valueForKey:ATT_STATUS];

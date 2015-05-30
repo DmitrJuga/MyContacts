@@ -101,13 +101,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="783" y="-328"/>
+            <point key="canvasLocation" x="780" y="-314"/>
         </scene>
         <!--Новый контакт-->
         <scene sceneID="qMx-cp-3jU">
             <objects>
                 <tableViewController title="Новый контакт" id="V88-Jb-sAt" customClass="DetailsViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="tiE-fk-D2T">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="68" sectionHeaderHeight="1" sectionFooterHeight="1" id="tiE-fk-D2T">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -188,7 +188,7 @@
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="100" id="wqF-Y7-emZ">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="68" id="wqF-Y7-emZ">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wqF-Y7-emZ" id="lzB-Uh-Aof">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -220,13 +220,13 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="30" id="6mn-Ym-Rtu">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="68" id="6mn-Ym-Rtu">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6mn-Ym-Rtu" id="PS8-Qd-3Rq">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Статус" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Lae-0h-6D9">
-                                                    <rect key="frame" x="16" y="0.0" width="288" height="30"/>
+                                                    <rect key="frame" x="16" y="30" width="288" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                                                     <connections>
@@ -237,32 +237,37 @@
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Lae-0h-6D9" secondAttribute="trailing" constant="8" id="37V-Gz-ue3"/>
                                                 <constraint firstItem="Lae-0h-6D9" firstAttribute="top" secondItem="PS8-Qd-3Rq" secondAttribute="topMargin" constant="-8" id="6d7-Ka-oIO"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Lae-0h-6D9" secondAttribute="bottom" id="XFM-7h-9fS"/>
                                                 <constraint firstItem="Lae-0h-6D9" firstAttribute="leading" secondItem="PS8-Qd-3Rq" secondAttribute="leadingMargin" constant="8" id="zNu-FN-as7"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="6d7-Ka-oIO"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="200" id="XFq-mm-nB6">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="53" id="XFq-mm-nB6">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XFq-mm-nB6" id="Xt9-j4-HGT">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mDu-hc-MmH">
-                                                    <rect key="frame" x="16" y="84" width="288" height="32"/>
-                                                    <color key="backgroundColor" red="0.047058823530000002" green="0.37254901959999998" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                                    <state key="normal" title="Сохранить">
+                                                    <rect key="frame" x="16" y="13" width="288" height="32"/>
+                                                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                                    <state key="normal" title="Удалить">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="btnPressed:" destination="V88-Jb-sAt" eventType="touchUpInside" id="Fq8-Df-6e6"/>
+                                                        <action selector="btnDeletePressed:" destination="V88-Jb-sAt" eventType="touchUpInside" id="vWj-KB-JM9"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="mDu-hc-MmH" firstAttribute="top" secondItem="Xt9-j4-HGT" secondAttribute="topMargin" constant="76" id="EEK-aS-2SS"/>
                                                 <constraint firstItem="mDu-hc-MmH" firstAttribute="leading" secondItem="Xt9-j4-HGT" secondAttribute="leadingMargin" constant="8" id="EQr-bS-f26"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="mDu-hc-MmH" secondAttribute="trailing" constant="8" id="QJ3-IT-TZ3"/>
+                                                <constraint firstItem="mDu-hc-MmH" firstAttribute="bottom" secondItem="Xt9-j4-HGT" secondAttribute="bottomMargin" id="mV0-0e-PMH"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -278,11 +283,12 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="bottomButton" destination="mDu-hc-MmH" id="ar0-bO-szo"/>
+                        <outlet property="btnDelete" destination="mDu-hc-MmH" id="Cqe-zm-QiQ"/>
+                        <outlet property="btnDeleteCell" destination="XFq-mm-nB6" id="1Ub-38-kUW"/>
+                        <outlet property="btnImageChange" destination="3a6-bO-iNk" id="dwR-qW-sw5"/>
+                        <outlet property="btnImageView" destination="2De-Oa-R3P" id="WG8-U7-q8j"/>
                         <outlet property="email" destination="fY9-9h-9xL" id="hOj-hi-iEV"/>
                         <outlet property="firstName" destination="lk5-ON-6H0" id="PLR-cQ-feB"/>
-                        <outlet property="imageChangeButton" destination="3a6-bO-iNk" id="ESe-Ht-IA3"/>
-                        <outlet property="imageViewButton" destination="2De-Oa-R3P" id="Vdl-QO-CL7"/>
                         <outlet property="imgView" destination="7kE-5Q-75f" id="jXo-4w-1Z6"/>
                         <outlet property="lastName" destination="yv7-zK-Pkf" id="Jnj-Tg-LMZ"/>
                         <outlet property="phone" destination="34u-I9-ZpN" id="ciR-bs-j5L"/>
