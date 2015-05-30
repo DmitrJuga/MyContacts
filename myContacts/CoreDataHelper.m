@@ -79,9 +79,23 @@
 
 // получение всех объектов для указанного entity
 - (NSArray *)fetchObjectsForEntity:(NSString *)entityName {
-    NSError *error = nil;
+    return [self fetchObjectsForEntity:entityName sortedBy:nil];
+}
 
+// получение всех объектов для указанного entity c сортировкой
+- (NSArray *)fetchObjectsForEntity:(NSString *)entityName sortedBy:(NSArray *)sortKeys {
     NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:entityName];
+    // задаем сортировку
+    if (sortKeys) {
+        NSMutableArray *sortDescriptors = [[NSMutableArray alloc] init];
+        for (NSString *key in sortKeys) {
+            NSSortDescriptor *sortDescr = [[NSSortDescriptor alloc] initWithKey:key ascending:YES];
+            [sortDescriptors addObject:sortDescr];
+        }
+        request.sortDescriptors = sortDescriptors;
+    }
+    // выполняем запрос
+    NSError *error = nil;
     NSArray *array = [self.context executeFetchRequest:request error:&error];
     if (error) {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);

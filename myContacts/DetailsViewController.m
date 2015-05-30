@@ -9,6 +9,7 @@
 #import "AppConstants.h"
 #import "Utils.h"
 #import "DetailsViewController.h"
+#import "ImageViewController.h"
 
 @interface DetailsViewController()
 
@@ -74,7 +75,6 @@
             self.imageViewButton.hidden = NO;
         }
         self.imageChangeButton.hidden = YES;
-        
         self.bottomButton.backgroundColor = [UIColor redColor];
         [self.bottomButton setTitle:@"Удалить" forState:UIControlStateNormal];
     }
@@ -82,7 +82,6 @@
     // "круглая аватарка"
     self.imgView.layer.cornerRadius = self.imgView.bounds.size.width / 2;
     self.imgView.clipsToBounds = YES;
-
     // оверлеи для предупреждения о невалидности полей
     self.lastName.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"error"]];;
     self.lastName.leftViewMode = UITextFieldViewModeNever;
@@ -197,10 +196,10 @@
     textField.leftViewMode = UITextFieldViewModeNever;
 }
 
-// форматирование ввода
+// форматирование ввода данных в поле
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     if ([textField isEqual:self.phone]) {
-        // форматирование номера телефона
+        // форматирование для номера телефона
         NSError *error = nil;
         NSString *phString = [NSString stringWithFormat:@"%@%@", textField.text, string];
         NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"[\\s-\\(\\)]"
@@ -234,12 +233,10 @@
 
 // обработчик нажатия на аватарку
 - (IBAction)btnImageViewPressed:(id)sender {
-    if (!self.contact) {
-        if (self.image) {
-            [self performSegueWithIdentifier:SEGUE_IMG sender:nil];
-        } else {
-            [self btnChangeImagePressed:sender];
-        }
+    if (self.image) {
+        [self performSegueWithIdentifier:SEGUE_IMG sender:nil];
+    } else if (!self.contact) {
+        [self btnChangeImagePressed:sender];
     }
 }
 
@@ -255,9 +252,7 @@
 #pragma mark - UIImagePickerControllerDelegate
 
 // выбор картинки из PhotoLibrary
-- (void)imagePickerController:(UIImagePickerController *)picker
-didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     self.image = [info valueForKey:UIImagePickerControllerOriginalImage];
     if (self.image) {
         self.imgView.image = self.image;
@@ -268,9 +263,9 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
 
 #pragma mark - Navigation
 
-// передаём параметры в DetailsViewController
+// передаём параметры в ImageViewController
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    DetailsViewController *vc = segue.destinationViewController;
+    ImageViewController *vc = segue.destinationViewController;
     vc.image = self.image;
 }
 

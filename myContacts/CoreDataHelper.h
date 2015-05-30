@@ -20,6 +20,7 @@
 
 - (NSManagedObject *)addObjectForEntity:(NSString *)entityName;
 - (NSArray *)fetchObjectsForEntity:(NSString *)entityName;
+- (NSArray *)fetchObjectsForEntity:(NSString *)entityName sortedBy:(NSArray *)sortKeys;
 - (void)deleteObject:(NSManagedObject *)object;
 
 @end

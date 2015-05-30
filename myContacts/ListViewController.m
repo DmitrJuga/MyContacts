@@ -7,6 +7,7 @@
 
 
 #import "AppConstants.h"
+#import "Utils.h"
 #import "CoreDataHelper.h"
 #import "ListViewController.h"
 #import "CustomCell.h"
@@ -34,22 +35,36 @@
     [super viewWillAppear:animated];
     
     // перегрузка таблицы данными из CoreData перед появлением на экране
+    NSArray *arrayFetch = [self.coreData fetchObjectsForEntity:ENTITY_NAME_CONTACT
+                                                      sortedBy:@[ ATT_LAST_NAME, ATT_FIRST_NAME ]];
     [self.arrayContacts removeAllObjects];
-    [self.arrayContacts addObjectsFromArray:[self.coreData fetchObjectsForEntity:@"Contact"]];
+    [self.arrayContacts addObjectsFromArray:[Utils splitArray:arrayFetch withKey:ATT_LAST_NAME keyLenght:1]];
     [self.tableView reloadData];
 }
 
+
 #pragma mark - UITableViewDataSource
 
-// кол-во строк в списке
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+// кол-во секций
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.arrayContacts.count;
+}
+
+// кол-во строк в секции
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.arrayContacts[section] count];
+}
+
+// возвращаем заголовок секции
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    NSManagedObject *contact = [self.arrayContacts[section] firstObject];
+    return [[contact valueForKey:ATT_LAST_NAME] substringToIndex:1];
 }
 
 // возвращаем ячейку
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_LIST forIndexPath:indexPath];
-    NSManagedObject *contact = self.arrayContacts[indexPath.row];
+    NSManagedObject *contact = self.arrayContacts[indexPath.section][indexPath.row];
     [cell setupCellForData:contact];
     return cell;
 }
@@ -60,16 +75,23 @@
 }
 
 // удаление записи
-- (void)tableView:(UITableView *)tableView
-    commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
-     forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSManagedObject *contact = self.arrayContacts[indexPath.row];
+        NSMutableArray *subArray = self.arrayContacts[indexPath.section];
+        NSManagedObject *contact = subArray[indexPath.row];
+        // удаление из coredata
         [self.coreData deleteObject:contact];
         [self.coreData save];
-        [self.arrayContacts removeObjectAtIndex:indexPath.row];
-        [tableView reloadData];
+        // удаление из массива и tableView
+        [subArray removeObjectAtIndex:indexPath.row];
+        if (subArray.count == 0) {
+            [self.arrayContacts removeObjectAtIndex:indexPath.section];
+            [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section]
+                     withRowAnimation:UITableViewRowAnimationLeft];
+        } else {
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                             withRowAnimation:UITableViewRowAnimationLeft];
+        }
     }
 }
 
@@ -82,7 +104,8 @@
     if ([segue.identifier isEqualToString:SEGUE_ADD]) {
         vc.contact = nil;
     } else if ([segue.identifier isEqualToString:SEGUE_DETAILS]) {
-        vc.contact = self.arrayContacts[self.tableView.indexPathForSelectedRow.row];
+        NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
+        vc.contact = self.arrayContacts[indexPath.section][indexPath.row];
     }
 }
 

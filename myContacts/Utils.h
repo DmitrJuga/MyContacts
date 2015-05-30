@@ -12,5 +12,6 @@
 
 + (BOOL)validEmail:(NSString*)emailString;
 + (NSString *)formatPhoneNumber:(NSString *)simpleNumber;
++ (NSArray *)splitArray:(NSArray *)array withKey:(NSString *)key keyLenght:(NSInteger)length;
 
 @end

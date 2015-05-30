@@ -129,4 +129,22 @@
 }
 
 
+// разбиение массива на секции (массив с вложенными массивами) по ключу
++ (NSArray *)splitArray:(NSArray *)array withKey:(NSString *)key keyLenght:(NSInteger)length {
+    NSMutableArray *resultArray = [[NSMutableArray alloc]init];
+    NSMutableArray *subArray = nil;
+    NSString *subArrayKey = @"";
+    for (id obj in array) {
+        NSString *objKey = [[obj valueForKey:key] substringToIndex:length];
+        if ([objKey isEqual:subArrayKey]) {
+            [subArray addObject:obj];
+        } else {
+            subArrayKey = objKey;
+            subArray = [[NSMutableArray alloc] initWithObjects:obj, nil];
+            [resultArray addObject:subArray];
+        }
+    }
+    return resultArray;
+}
+
 @end
