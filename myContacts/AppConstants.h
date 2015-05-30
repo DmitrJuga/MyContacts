@@ -22,3 +22,6 @@
 #define     SEGUE_ADD       @"Add"
 #define     SEGUE_DETAILS   @"Details"
 #define     SEGUE_IMG       @"ImageView"
+
+// Strings
+#define     ALERT_TITLE     @"Внимание!"

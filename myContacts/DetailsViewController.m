@@ -136,7 +136,7 @@
     }
     // предупреждаем пользователя
     if (invalidField) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Внимание!"
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:ALERT_TITLE
                                                                        message:[NSString stringWithFormat:msg, invalidField.placeholder]
                                                                 preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
@@ -162,9 +162,9 @@
 // удаление текущего контакта
 - (void)deleteContact {
     // предупреждаем пользователя
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Удаление"
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:ALERT_TITLE
                                                                    message:@"Контакт будет удален безвозвратно!"
-                                                            preferredStyle:UIAlertControllerStyleAlert];
+                                                            preferredStyle:UIAlertControllerStyleActionSheet];
     [alert addAction:[UIAlertAction actionWithTitle:@"Удалить"
                                               style:UIAlertActionStyleDestructive
                                             handler:^(UIAlertAction *action) {
@@ -308,7 +308,7 @@
     switch (indexPath.row) {
         case 0: height = 124;
                 break;
-        case 3: height = (self.contact) ? tableView.frame.size.height - 328 : 0;
+        case 3: height = (self.contact) ? tableView.frame.size.height - 332 : 0;
                 break;
     }
     return height;
