@@ -29,6 +29,9 @@
     self.lastName.text = [contact valueForKey:ATT_LAST_NAME];
     self.firstName.text = [contact valueForKey:ATT_FIRST_NAME];
     self.status.text = [contact valueForKey:ATT_STATUS];
+    // "круглая аватарка"
+    self.imgView.layer.cornerRadius = self.imgView.bounds.size.width / 2;
+    self.imgView.clipsToBounds = YES;
 }
 
 @end

@@ -76,6 +76,9 @@
         [self.bottomButton setTitle:@"Удалить" forState:UIControlStateNormal];
     }
     self.bottomButton.layer.cornerRadius = 8;
+    // "круглая аватарка"
+    self.imgView.layer.cornerRadius = self.imgView.bounds.size.width / 2;
+    self.imgView.clipsToBounds = YES;
 
     // оверлеи для предупреждения о невалидности полей
     self.lastName.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"error"]];;
