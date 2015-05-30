@@ -234,10 +234,12 @@
 
 // обработчик нажатия на аватарку
 - (IBAction)btnImageViewPressed:(id)sender {
-    if (self.image) {
-        [self performSegueWithIdentifier:SEGUE_IMG sender:nil];
-    } else {
-        [self btnChangeImagePressed:sender];
+    if (!self.contact) {
+        if (self.image) {
+            [self performSegueWithIdentifier:SEGUE_IMG sender:nil];
+        } else {
+            [self btnChangeImagePressed:sender];
+        }
     }
 }
 
