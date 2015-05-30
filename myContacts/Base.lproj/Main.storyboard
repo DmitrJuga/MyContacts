@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PUc-nM-mWX">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -183,9 +184,23 @@
                                     <outlet property="delegate" destination="3UQ-7s-wIP" id="rmG-09-SWe"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZQ-sm-GjX">
+                                <rect key="frame" x="16" y="88" width="68" height="68"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="68" id="WLU-xA-lgn"/>
+                                    <constraint firstAttribute="height" constant="68" id="wgC-DS-ctf"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnImageViewPressed:" destination="3UQ-7s-wIP" eventType="touchUpInside" id="H1b-Hb-7ja"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="lR2-na-eDV" firstAttribute="centerX" secondItem="SZQ-sm-GjX" secondAttribute="centerX" id="0Xo-Oh-CbE"/>
                             <constraint firstItem="Uhl-S7-ZiW" firstAttribute="top" secondItem="nQf-cc-3yn" secondAttribute="bottom" constant="32" id="0ok-9U-0b8"/>
                             <constraint firstItem="nQf-cc-3yn" firstAttribute="leading" secondItem="hBh-X4-Bew" secondAttribute="leadingMargin" id="E7t-aU-Xrf"/>
                             <constraint firstItem="nQf-cc-3yn" firstAttribute="top" secondItem="Chg-RE-Jxh" secondAttribute="bottom" constant="8" symbolic="YES" id="ETv-DL-8l2"/>
@@ -208,6 +223,7 @@
                             <constraint firstItem="c4D-dm-b0Q" firstAttribute="top" secondItem="IBh-yk-WvP" secondAttribute="bottom" constant="24" id="jJw-vx-bDa"/>
                             <constraint firstItem="nQf-cc-3yn" firstAttribute="trailing" secondItem="hBh-X4-Bew" secondAttribute="trailingMargin" id="ucF-eO-cth"/>
                             <constraint firstItem="Uhl-S7-ZiW" firstAttribute="leading" secondItem="hBh-X4-Bew" secondAttribute="leadingMargin" id="v8X-Wv-gcQ"/>
+                            <constraint firstItem="lR2-na-eDV" firstAttribute="centerY" secondItem="SZQ-sm-GjX" secondAttribute="centerY" id="xHU-YL-6qy"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -216,15 +232,74 @@
                         <outlet property="email" destination="nQf-cc-3yn" id="MhR-3S-96Y"/>
                         <outlet property="firstName" destination="4gX-O2-JiV" id="byY-LV-F7F"/>
                         <outlet property="imageChangeButton" destination="Gi5-Rv-ZBj" id="sTb-76-DU7"/>
+                        <outlet property="imageViewButton" destination="SZQ-sm-GjX" id="hzE-RK-jOo"/>
                         <outlet property="imgView" destination="lR2-na-eDV" id="39Z-Gg-C58"/>
                         <outlet property="lastName" destination="bw8-Ff-cl0" id="8Vb-A3-r9v"/>
                         <outlet property="phone" destination="Chg-RE-Jxh" id="Zv7-jQ-KGq"/>
                         <outlet property="status" destination="Uhl-S7-ZiW" id="c7g-WG-XxL"/>
+                        <segue destination="JLT-lV-H9y" kind="show" identifier="ImageView" id="Wvw-rJ-yPB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QZm-1G-KUc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1184" y="-328"/>
+        </scene>
+        <!--Image View Controller-->
+        <scene sceneID="7eO-CW-LOV">
+            <objects>
+                <viewController id="JLT-lV-H9y" customClass="ImageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JYD-ix-WCG"/>
+                        <viewControllerLayoutGuide type="bottom" id="n8y-4h-dzx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Rn7-L4-wWd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ee4-cj-jg4">
+                                <rect key="frame" x="-59" y="42" width="0.0" height="0.0"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ee4-cj-jg4" secondAttribute="height" multiplier="1:1" id="0zP-61-Yj8"/>
+                                    <constraint firstAttribute="height" id="sfi-1O-Yh0"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="R4E-ag-a3y">
+                                <rect key="frame" x="0.0" y="124" width="320" height="320"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="286" id="PBt-rK-Mb8"/>
+                                    <constraint firstAttribute="width" secondItem="R4E-ag-a3y" secondAttribute="height" multiplier="1:1" id="v6C-yJ-S6Q"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="PBt-rK-Mb8"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="R4E-ag-a3y" firstAttribute="width" secondItem="Rn7-L4-wWd" secondAttribute="width" id="4nP-mN-fYQ"/>
+                            <constraint firstAttribute="centerX" secondItem="R4E-ag-a3y" secondAttribute="centerX" id="Bc7-ho-rCG"/>
+                            <constraint firstAttribute="centerY" secondItem="R4E-ag-a3y" secondAttribute="centerY" id="aS0-76-FUw"/>
+                            <constraint firstItem="ee4-cj-jg4" firstAttribute="top" secondItem="Rn7-L4-wWd" secondAttribute="topMargin" constant="42" id="cFH-Qd-cuO"/>
+                            <constraint firstItem="ee4-cj-jg4" firstAttribute="leading" secondItem="Rn7-L4-wWd" secondAttribute="leadingMargin" constant="-75" id="dHX-dL-lHd"/>
+                            <constraint firstItem="R4E-ag-a3y" firstAttribute="leading" secondItem="Rn7-L4-wWd" secondAttribute="leadingMargin" constant="-16" id="mc5-S4-Zte"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="R4E-ag-a3y" secondAttribute="trailing" constant="-16" id="s12-MR-uN9"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="4nP-mN-fYQ"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="imageView" destination="R4E-ag-a3y" id="JLb-3F-3Bb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mKp-b3-upU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1598" y="-328"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iN5-FR-djp">

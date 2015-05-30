@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1D80D7D41B19079A00EA724A /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D80D7D31B19079A00EA724A /* Utils.m */; };
+		1D80D7D81B194EDF00EA724A /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D80D7D71B194EDF00EA724A /* ImageViewController.m */; };
 		1DF7C8AF1B13B1E200529494 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7C8AE1B13B1E200529494 /* main.m */; };
 		1DF7C8B21B13B1E200529494 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7C8B11B13B1E200529494 /* AppDelegate.m */; };
 		1DF7C8B81B13B1E200529494 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7C8B71B13B1E200529494 /* ListViewController.m */; };
@@ -23,6 +24,8 @@
 /* Begin PBXFileReference section */
 		1D80D7D21B19079A00EA724A /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = MyContacts/Utils.h; sourceTree = SOURCE_ROOT; };
 		1D80D7D31B19079A00EA724A /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = MyContacts/Utils.m; sourceTree = SOURCE_ROOT; };
+		1D80D7D61B194EDF00EA724A /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageViewController.h; path = MyContacts/ImageViewController.h; sourceTree = SOURCE_ROOT; };
+		1D80D7D71B194EDF00EA724A /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageViewController.m; path = MyContacts/ImageViewController.m; sourceTree = SOURCE_ROOT; };
 		1DF7C8A91B13B1E200529494 /* Мои контакты.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Мои контакты.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF7C8AD1B13B1E200529494 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DF7C8AE1B13B1E200529494 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -54,6 +57,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D80D7D91B194EF500EA724A /* ImageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1D80D7D61B194EDF00EA724A /* ImageViewController.h */,
+				1D80D7D71B194EDF00EA724A /* ImageViewController.m */,
+			);
+			name = ImageViewController;
+			sourceTree = "<group>";
+		};
+		1D80D7DA1B194F1600EA724A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				1D80D7D21B19079A00EA724A /* Utils.h */,
+				1D80D7D31B19079A00EA724A /* Utils.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		1DF7C8A01B13B1E200529494 = {
 			isa = PBXGroup;
 			children = (
@@ -74,13 +95,13 @@
 			isa = PBXGroup;
 			children = (
 				1DF7C8DC1B13C1D200529494 /* AppConstants.h */,
-				1D80D7D21B19079A00EA724A /* Utils.h */,
-				1D80D7D31B19079A00EA724A /* Utils.m */,
 				1DF7C8B01B13B1E200529494 /* AppDelegate.h */,
 				1DF7C8B11B13B1E200529494 /* AppDelegate.m */,
 				1DF7C8E01B13C33100529494 /* CoreDataHelper */,
 				1DF7C8D91B13BC0500529494 /* ListViewController */,
 				1DF7C8E71B13F93500529494 /* DetailsViewController */,
+				1D80D7D91B194EF500EA724A /* ImageViewController */,
+				1D80D7DA1B194F1600EA724A /* Utils */,
 				1DF7C8B91B13B1E200529494 /* Main.storyboard */,
 				1DF7C8E81B1405E100529494 /* Model.xcdatamodeld */,
 				1DF7C8BC1B13B1E200529494 /* Images.xcassets */,
@@ -204,6 +225,7 @@
 				1D80D7D41B19079A00EA724A /* Utils.m in Sources */,
 				1DF7C8EA1B1405E100529494 /* Model.xcdatamodeld in Sources */,
 				1DF7C8E61B13F93100529494 /* DetailsViewController.m in Sources */,
+				1D80D7D81B194EDF00EA724A /* ImageViewController.m in Sources */,
 				1DF7C8B81B13B1E200529494 /* ListViewController.m in Sources */,
 				1DF7C8AF1B13B1E200529494 /* main.m in Sources */,
 			);

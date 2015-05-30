@@ -21,3 +21,4 @@
 #define     CELL_LIST       @"ContactCell"
 #define     SEGUE_ADD       @"Add"
 #define     SEGUE_DETAILS   @"Details"
+#define     SEGUE_IMG       @"ImageView"

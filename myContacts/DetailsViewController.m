@@ -20,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *status;
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
 @property (weak, nonatomic) IBOutlet UIButton *imageChangeButton;
+@property (weak, nonatomic) IBOutlet UIButton *imageViewButton;
+
 @property (strong, nonatomic) IBOutlet UIImage *image;
 @property (strong, nonatomic) CoreDataHelper *coreData;
 
@@ -69,6 +71,7 @@
         if (imageData) {
             self.image = [UIImage imageWithData:imageData];
             self.imgView.image = self.image;
+            self.imageViewButton.hidden = NO;
         }
         self.imageChangeButton.hidden = YES;
         
@@ -76,6 +79,9 @@
         [self.bottomButton setTitle:@"Удалить" forState:UIControlStateNormal];
     }
     self.bottomButton.layer.cornerRadius = 8;
+    // "круглая аватарка"
+    self.imgView.layer.cornerRadius = self.imgView.bounds.size.width / 2;
+    self.imgView.clipsToBounds = YES;
 
     // оверлеи для предупреждения о невалидности полей
     self.lastName.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"error"]];;
@@ -226,6 +232,15 @@
     }
 }
 
+// обработчик нажатия на аватарку
+- (IBAction)btnImageViewPressed:(id)sender {
+    if (self.image) {
+        [self performSegueWithIdentifier:SEGUE_IMG sender:nil];
+    } else {
+        [self btnChangeImagePressed:sender];
+    }
+}
+
 // обработчик нажатия кнопки выбора картинки
 - (IBAction)btnChangeImagePressed:(id)sender {
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
@@ -247,5 +262,15 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
     }
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
+
+
+#pragma mark - Navigation
+
+// передаём параметры в DetailsViewController
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    DetailsViewController *vc = segue.destinationViewController;
+    vc.image = self.image;
+}
+
 
 @end
