@@ -13,18 +13,21 @@
 
 @interface DetailsViewController()
 
-@property (weak, nonatomic) IBOutlet UIButton *bottomButton;
 @property (weak, nonatomic) IBOutlet UITextField *lastName;
 @property (weak, nonatomic) IBOutlet UITextField *firstName;
 @property (weak, nonatomic) IBOutlet UITextField *phone;
 @property (weak, nonatomic) IBOutlet UITextField *email;
 @property (weak, nonatomic) IBOutlet UITextField *status;
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
-@property (weak, nonatomic) IBOutlet UIButton *imageChangeButton;
-@property (weak, nonatomic) IBOutlet UIButton *imageViewButton;
-
 @property (strong, nonatomic) UIImage *image;
+
+@property (weak, nonatomic) IBOutlet UITableViewCell *btnDeleteCell;
+@property (weak, nonatomic) IBOutlet UIButton *btnImageChange;
+@property (weak, nonatomic) IBOutlet UIButton *btnImageView;
+@property (weak, nonatomic) IBOutlet UIButton *btnDelete;
+
 @property (strong, nonatomic) CoreDataHelper *coreData;
+@property (assign, nonatomic) BOOL editMode;
 
 @end
 
@@ -32,58 +35,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.coreData = [CoreDataHelper sharedInstance];
     
     // обработчик нажатий (чтобы убирать клавиатуру при нажатии вне полей)
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHandler:)];
     [self.view addGestureRecognizer:tap];
-    
-    [self setUI];
+    // инициализация UI
+    self.editMode = (self.contact == nil);
+    [self setupUI];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+// первоначальная настройка UI
+- (void)setupUI {
     
-    // если новый контакт => клавиатуру в первом поле
-    if (!self.contact && !self.image) {
-        [self.lastName becomeFirstResponder];
-    }
-}
-
-// настройка UI
-- (void)setUI {
-    if (self.contact) {
-        // если передан контакт = > режим просмотра
-        self.title = @"Контакт";
-        
-        self.lastName.text = [self.contact valueForKey:ATT_LAST_NAME];
-        self.firstName.text = [self.contact valueForKey:ATT_FIRST_NAME];
-        self.phone.text = [self.contact valueForKey:ATT_PHONE];
-        self.email.text = [self.contact valueForKey:ATT_EMAIL];
-        self.status.text = [self.contact valueForKey:ATT_STATUS];
-        self.lastName.userInteractionEnabled = NO;
-        self.firstName.userInteractionEnabled = NO;
-        self.phone.userInteractionEnabled = NO;
-        self.email.userInteractionEnabled = NO;
-        self.status.userInteractionEnabled = NO;
-        self.lastName.textColor = [UIColor darkGrayColor];
-        self.firstName.textColor = [UIColor darkGrayColor];
-        self.phone.textColor = [UIColor darkGrayColor];
-        self.email.textColor = [UIColor darkGrayColor];
-        self.status.textColor = [UIColor darkGrayColor];
-        
-        NSData *imageData = [self.contact valueForKey:ATT_IMAGE];
-        if (imageData) {
-            self.image = [UIImage imageWithData:imageData];
-            self.imgView.image = self.image;
-            self.imageViewButton.hidden = NO;
-        }
-        self.imageChangeButton.hidden = YES;
-        self.bottomButton.backgroundColor = [UIColor redColor];
-        [self.bottomButton setTitle:@"Удалить" forState:UIControlStateNormal];
-    }
-    self.bottomButton.layer.cornerRadius = 8;
     // "круглая аватарка"
     self.imgView.layer.cornerRadius = self.imgView.bounds.size.width / 2;
     self.imgView.clipsToBounds = YES;
@@ -94,6 +58,67 @@
     self.firstName.leftViewMode = UITextFieldViewModeNever;
     self.email.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"error"]];;
     self.email.leftViewMode = UITextFieldViewModeNever;
+
+    // если передан контакт = > заполняем поля
+    if (self.contact) {
+        self.title = @"Контакт";
+        self.lastName.text = [self.contact valueForKey:ATT_LAST_NAME];
+        self.firstName.text = [self.contact valueForKey:ATT_FIRST_NAME];
+        self.phone.text = [self.contact valueForKey:ATT_PHONE];
+        self.email.text = [self.contact valueForKey:ATT_EMAIL];
+        self.status.text = [self.contact valueForKey:ATT_STATUS];
+        NSData *imageData = [self.contact valueForKey:ATT_IMAGE];
+        if (imageData) {
+            self.image = [UIImage imageWithData:imageData];
+            self.imgView.image = self.image;
+        }
+        CGRect frame = self.btnDeleteCell.contentView.frame;
+        frame.size.height = 250;
+        self.btnDeleteCell.contentView.frame = frame;
+        self.btnDelete.layer.cornerRadius = 8;
+        self.btnDelete.hidden = NO;
+    } else {
+        self.title = @"Новый контакт";
+        self.btnDelete.hidden = YES;
+    }
+    [self setupUIForEditMode];
+}
+
+// настройка UI для режима редактирования
+- (void)setupUIForEditMode {
+    NSString *rightButtonTitle;
+    if (self.editMode) {
+        self.lastName.userInteractionEnabled = YES;
+        self.firstName.userInteractionEnabled = YES;
+        self.phone.userInteractionEnabled = YES;
+        self.email.userInteractionEnabled = YES;
+        self.status.userInteractionEnabled = YES;
+        self.lastName.textColor = [UIColor blackColor];
+        self.firstName.textColor = [UIColor blackColor];
+        self.phone.textColor = [UIColor blackColor];
+        self.email.textColor = [UIColor blackColor];
+        self.status.textColor = [UIColor blackColor];
+        self.btnImageChange.hidden = NO;
+        [self.lastName becomeFirstResponder];
+        rightButtonTitle = (self.contact) ? @"Сохранить" : @"Готово";
+    } else {
+        self.lastName.userInteractionEnabled = NO;
+        self.firstName.userInteractionEnabled = NO;
+        self.phone.userInteractionEnabled = NO;
+        self.email.userInteractionEnabled = NO;
+        self.status.userInteractionEnabled = NO;
+        self.lastName.textColor = [UIColor darkGrayColor];
+        self.firstName.textColor = [UIColor darkGrayColor];
+        self.phone.textColor = [UIColor darkGrayColor];
+        self.email.textColor = [UIColor darkGrayColor];
+        self.status.textColor = [UIColor darkGrayColor];
+        self.btnImageChange.hidden = YES;
+        rightButtonTitle = @"Изменить";
+    }
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:rightButtonTitle
+                                                                    style:UIBarButtonItemStylePlain
+                                                                   target:self action:@selector(btnEditSavePressed:)];
+    self.navigationItem.rightBarButtonItem = rightButton;
 }
 
 // сохранение нового контакта
@@ -122,16 +147,16 @@
     }
     
     // сохраняем
-    NSManagedObject *contact = [self.coreData addObjectForEntity:ENTITY_NAME_CONTACT];
-    [contact setValue:self.lastName.text forKey:ATT_LAST_NAME];
-    [contact setValue:self.firstName.text forKey:ATT_FIRST_NAME];
-    [contact setValue:self.phone.text forKey:ATT_PHONE];
-    [contact setValue:self.email.text forKey:ATT_EMAIL];
-    [contact setValue:self.status.text forKey:ATT_STATUS];
-    [contact setValue:UIImagePNGRepresentation(self.image) forKey:ATT_IMAGE];
+    if (!self.contact) {
+        self.contact = [self.coreData addObjectForEntity:ENTITY_NAME_CONTACT];
+    }
+    [self.contact setValue:self.lastName.text forKey:ATT_LAST_NAME];
+    [self.contact setValue:self.firstName.text forKey:ATT_FIRST_NAME];
+    [self.contact setValue:self.phone.text forKey:ATT_PHONE];
+    [self.contact setValue:self.email.text forKey:ATT_EMAIL];
+    [self.contact setValue:self.status.text forKey:ATT_STATUS];
+    [self.contact setValue:UIImagePNGRepresentation(self.image) forKey:ATT_IMAGE];
     [self.coreData save];
-
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 // удаление текущего контакта
@@ -210,14 +235,24 @@
 
 #pragma mark - Actions Handlers
 
-// обработчик нажатия нижней кнопки
-- (IBAction)btnPressed:(id)sender {
-    if (self.contact) {
-        // сохранить
-        [self deleteContact];
-    } else {
-        // удалить
+// обработчик нажатия кнопки сохранить
+- (void)btnEditSavePressed:(id)sender {
+    if (self.editMode) {
+        // кнопка "Сохранить"
+        BOOL isNewContact = (self.contact == nil);
         [self saveContact];
+        if (isNewContact) {
+            // если создавали новый контакт - выходим
+            [self.navigationController popViewControllerAnimated:YES];
+        } else {
+            // если не новый - выключаем режим редактирования
+            self.editMode = NO;
+            [self setupUIForEditMode];
+        }
+    } else {
+        // кнопка "Редактировать"
+        self.editMode = YES;
+        [self setupUIForEditMode];
     }
 }
 
@@ -225,7 +260,7 @@
 - (IBAction)btnImageViewPressed:(id)sender {
     if (self.image) {
         [self performSegueWithIdentifier:SEGUE_IMG sender:nil];
-    } else if (!self.contact) {
+    } else if (self.editMode) {
         [self btnChangeImagePressed:sender];
     }
 }
@@ -239,13 +274,19 @@
 }
 
 // обработчик нажатия - убрать клавиатуру при нажатии вне полей
-- (IBAction)tapHandler:(id)sender {
+- (void)tapHandler:(id)sender {
     [self.lastName resignFirstResponder];
     [self.firstName resignFirstResponder];
     [self.phone resignFirstResponder];
     [self.email resignFirstResponder];
     [self.status resignFirstResponder];
 }
+
+// обработчик нажатия кнопки удалить
+- (IBAction)btnDeletePressed:(id)sender {
+    [self deleteContact];
+}
+
 
 #pragma mark - UIImagePickerControllerDelegate
 
@@ -256,6 +297,21 @@
         self.imgView.image = self.image;
     }
     [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+#pragma mark - UITableViewDelegate
+
+// высота ячеек
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat height = tableView.rowHeight;
+    switch (indexPath.row) {
+        case 0: height = 124;
+                break;
+        case 3: height = (self.contact) ? tableView.frame.size.height - 328 : 0;
+                break;
+    }
+    return height;
 }
 
 
