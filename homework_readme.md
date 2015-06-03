@@ -16,4 +16,4 @@ geekbrains.ru, Objective-C level 2 course
 
 вот как-то так...
 
-:)
+:]
