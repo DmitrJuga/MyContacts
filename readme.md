@@ -1,6 +1,6 @@
 # ![MyContacts](https://github.com/DmitrJuga/MyContacts/blob/master/myContacts/Images.xcassets/AppIcon.appiconset/mzl.fbquoxfc-29@2x.png) "Мои контакты" / "My Contacts"
 
-"Мои Контакты" - простая записная книжка (cписок контактов).    
+"Мои контакты" - простая записная книжка (cписок контактов).    
 Учебный (тренировочный) проект на Objective-C c использованием CoreData.
 
 ![](https://github.com/DmitrJuga/MyContacts/blob/master/screenshots/screenshot1.png)
