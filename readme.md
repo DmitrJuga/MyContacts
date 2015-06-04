@@ -1,4 +1,4 @@
-# ![MyContacts](https://github.com/DmitrJuga/MyContacts/blob/master/myContacts/Images.xcassets/AppIcon.appiconset/mzl.fbquoxfc-29@2x.png) "Мои контакты" / "My Contacts"
+# ![MyContacts](https://github.com/DmitrJuga/MyContacts/blob/master/myContacts/Images.xcassets/AppIcon.appiconset/mzl.fbquoxfc-29@2x.png)  Мои контакты / My Contacts
 
 **"Мои контакты"** - простая записная книжка (cписок контактов). Учебный (тренировочный) проект на **Objective-C** c использованием **CoreData**.
 
@@ -43,7 +43,7 @@
 
 ## Основа проекта
 
-Проект создан на основе моей домашней работы к уроку 6 по курсу **"Objective C. Уровень 2"** в [НОЧУ ДО «Школа программирования» (http://geekbrains.ru)](http://geekbrains.ru/). См. **домашнее задание** и пояснения к выполненой работе в [homework_readme.md](https://github.com/DmitrJuga/MyContacts/blob/master/homework_readme.md).
+Проект создан на основе моей домашней работы к уроку 6 по курсу **"Objective C. Уровень 2"** в [НОЧУ ДО «Школа программирования» (http://geekbrains.ru)](http://geekbrains.ru/). См. домашнее задание и пояснения к выполненой работе в [homework_readme.md](https://github.com/DmitrJuga/MyContacts/blob/master/homework_readme.md).
 
 ---
 
