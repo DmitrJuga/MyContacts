@@ -22,5 +22,4 @@
     self.imageView.image = self.image;
 }
 
-
 @end

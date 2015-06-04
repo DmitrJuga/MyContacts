@@ -4,7 +4,7 @@
 //
 //  Created by DmitrJuga on 26.05.15.
 //  Copyright (c) 2015 Dmitriy Dolotenko. All rights reserved.
-
+//
 
 #import "AppConstants.h"
 #import "Utils.h"
@@ -47,7 +47,7 @@
 
 // первоначальная настройка UI
 - (void)setupUI {
-    
+
     // "круглая аватарка"
     self.imgView.layer.cornerRadius = self.imgView.bounds.size.width / 2;
     self.imgView.clipsToBounds = YES;
@@ -318,10 +318,9 @@
 #pragma mark - Navigation
 
 // передаём параметры в ImageViewController
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     ImageViewController *vc = segue.destinationViewController;
     vc.image = self.image;
 }
-
 
 @end

@@ -10,7 +10,6 @@
 
 @implementation Utils
 
-
 // валидация e-mail
 + (BOOL)validEmail:(NSString*)emailString {
     NSString *regExPattern = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
@@ -26,7 +25,6 @@
         return YES;
     }
 }
-
 
 // форматирование номера телефона
 + (NSString *)formatPhoneNumber:(NSString *)phoneStr {
@@ -127,7 +125,6 @@
     
     return phoneStr;
 }
-
 
 // разбиение массива на секции (массив с вложенными массивами) по ключу
 + (NSArray *)splitArray:(NSArray *)array withKey:(NSString *)key keyLenght:(NSInteger)length {

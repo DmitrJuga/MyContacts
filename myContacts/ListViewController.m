@@ -4,7 +4,7 @@
 //
 //  Created by DmitrJuga on 25.05.15.
 //  Copyright (c) 2015 Dmitriy Dolotenko. All rights reserved.
-
+//
 
 #import "AppConstants.h"
 #import "Utils.h"
@@ -62,7 +62,7 @@
 }
 
 // возвращаем ячейку
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_LIST forIndexPath:indexPath];
     NSManagedObject *contact = self.arrayContacts[indexPath.section][indexPath.row];
     [cell setupCellForData:contact];
@@ -70,7 +70,7 @@
 }
 
 // разрешаем удалять
--(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
 
@@ -99,7 +99,7 @@
 #pragma mark: - Navigation
 
 // передаём параметры в DetailsViewController
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     DetailsViewController *vc = segue.destinationViewController;
     if ([segue.identifier isEqualToString:SEGUE_ADD]) {
         vc.contact = nil;

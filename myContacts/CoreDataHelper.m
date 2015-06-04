@@ -4,7 +4,7 @@
 //
 //  Created by DmitrJuga on 25.05.15.
 //  Copyright (c) 2015 Dmitriy Dolotenko. All rights reserved.
-
+//
 
 #import "CoreDataHelper.h"
 
@@ -108,6 +108,5 @@
 - (void)deleteObject:(NSManagedObject *)object {
     [self.context deleteObject:object];
 }
-
 
 @end
