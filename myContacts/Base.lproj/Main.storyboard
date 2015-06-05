@@ -255,7 +255,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mDu-hc-MmH">
                                                     <rect key="frame" x="16" y="13" width="288" height="32"/>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                     <state key="normal" title="Удалить">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -284,7 +284,6 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="btnDelete" destination="mDu-hc-MmH" id="Cqe-zm-QiQ"/>
-                        <outlet property="btnDeleteCell" destination="XFq-mm-nB6" id="1Ub-38-kUW"/>
                         <outlet property="btnImageChange" destination="3a6-bO-iNk" id="dwR-qW-sw5"/>
                         <outlet property="btnImageView" destination="2De-Oa-R3P" id="WG8-U7-q8j"/>
                         <outlet property="email" destination="fY9-9h-9xL" id="hOj-hi-iEV"/>

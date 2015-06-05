@@ -21,7 +21,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
 @property (strong, nonatomic) UIImage *image;
 
-@property (weak, nonatomic) IBOutlet UITableViewCell *btnDeleteCell;
 @property (weak, nonatomic) IBOutlet UIButton *btnImageChange;
 @property (weak, nonatomic) IBOutlet UIButton *btnImageView;
 @property (weak, nonatomic) IBOutlet UIButton *btnDelete;
@@ -72,10 +71,7 @@
             self.image = [UIImage imageWithData:imageData];
             self.imgView.image = self.image;
         }
-        CGRect frame = self.btnDeleteCell.contentView.frame;
-        frame.size.height = 250;
-        self.btnDeleteCell.contentView.frame = frame;
-        self.btnDelete.layer.cornerRadius = 8;
+        self.btnDelete.layer.cornerRadius = 6;
         self.btnDelete.hidden = NO;
     } else {
         self.title = @"Новый контакт";
@@ -121,8 +117,8 @@
     self.navigationItem.rightBarButtonItem = rightButton;
 }
 
-// сохранение нового контакта
-- (void)saveContact {
+// сохранение контакта
+- (BOOL)saveContact {
     // валидация полей
     NSString *msg = @"Необходимо заполнить поле: %@";
     UITextField *invalidField;
@@ -136,14 +132,15 @@
     }
     // предупреждаем пользователя
     if (invalidField) {
+        msg = [NSString stringWithFormat:msg, invalidField.placeholder];
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:ALERT_TITLE
-                                                                       message:[NSString stringWithFormat:msg, invalidField.placeholder]
+                                                                       message:msg
                                                                 preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
         [self presentViewController:alert animated:YES completion:^{
             [invalidField becomeFirstResponder];
         }];
-        return;
+        return NO;
     }
     
     // сохраняем
@@ -157,6 +154,7 @@
     [self.contact setValue:self.status.text forKey:ATT_STATUS];
     [self.contact setValue:UIImagePNGRepresentation(self.image) forKey:ATT_IMAGE];
     [self.coreData save];
+    return YES;
 }
 
 // удаление текущего контакта
@@ -240,14 +238,15 @@
     if (self.editMode) {
         // кнопка "Сохранить"
         BOOL isNewContact = (self.contact == nil);
-        [self saveContact];
-        if (isNewContact) {
-            // если создавали новый контакт - выходим
-            [self.navigationController popViewControllerAnimated:YES];
-        } else {
-            // если не новый - выключаем режим редактирования
-            self.editMode = NO;
-            [self setupUIForEditMode];
+        if ([self saveContact]) {
+            if (isNewContact) {
+                // если создали новый контакт - выходим
+                [self.navigationController popViewControllerAnimated:YES];
+            } else {
+                // если не новый - выключаем режим редактирования
+                self.editMode = NO;
+                [self setupUIForEditMode];
+            }
         }
     } else {
         // кнопка "Редактировать"
@@ -288,6 +287,18 @@
 }
 
 
+#pragma mark - UITableViewDelegate
+
+// высота ячеек
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 3) {
+        return (self.contact) ? tableView.frame.size.height - 332 : 0;
+    }
+    NSArray *cellHeights = @[ @124, @68, @68 ];
+    return [cellHeights[indexPath.row] floatValue];
+}
+
+
 #pragma mark - UIImagePickerControllerDelegate
 
 // выбор картинки из PhotoLibrary
@@ -297,21 +308,6 @@
         self.imgView.image = self.image;
     }
     [picker dismissViewControllerAnimated:YES completion:nil];
-}
-
-
-#pragma mark - UITableViewDelegate
-
-// высота ячеек
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat height = tableView.rowHeight;
-    switch (indexPath.row) {
-        case 0: height = 124;
-                break;
-        case 3: height = (self.contact) ? tableView.frame.size.height - 332 : 0;
-                break;
-    }
-    return height;
 }
 
 
