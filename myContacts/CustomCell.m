@@ -21,7 +21,7 @@
 @implementation CustomCell
 
 // Заполнение кастомной ячейки
-- (void)setupCellForData:(NSManagedObject *)contact {
+- (void)setupWithContact:(NSManagedObject *)contact {
     NSData *imageData = [contact valueForKey:ATT_IMAGE];
     self.imgView.image = (imageData) ? [UIImage imageWithData:imageData] : [UIImage imageNamed:@"dummy"];
     self.lastName.text = [contact valueForKey:ATT_LAST_NAME];

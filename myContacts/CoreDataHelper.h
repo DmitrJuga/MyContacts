@@ -16,8 +16,8 @@
 @interface CoreDataHelper : NSObject
 
 + (instancetype)sharedInstance;
-- (void)save;
 
+- (void)save;
 - (NSManagedObject *)addObjectForEntity:(NSString *)entityName;
 - (NSArray *)fetchObjectsForEntity:(NSString *)entityName;
 - (NSArray *)fetchObjectsForEntity:(NSString *)entityName sortedBy:(NSArray *)sortKeys;

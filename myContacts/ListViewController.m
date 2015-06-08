@@ -17,7 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *arrayContacts;
-@property (strong, nonatomic) CoreDataHelper *coreData;
+@property (weak, nonatomic) CoreDataHelper *coreData;
 
 @end
 
@@ -65,7 +65,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_LIST forIndexPath:indexPath];
     NSManagedObject *contact = self.arrayContacts[indexPath.section][indexPath.row];
-    [cell setupCellForData:contact];
+    [cell setupWithContact:contact];
     return cell;
 }
 
@@ -89,7 +89,7 @@
             [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section]
                      withRowAnimation:UITableViewRowAnimationLeft];
         } else {
-            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+            [tableView deleteRowsAtIndexPaths:@[indexPath]
                              withRowAnimation:UITableViewRowAnimationLeft];
         }
     }

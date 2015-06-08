@@ -11,6 +11,6 @@
 
 @interface CustomCell : UITableViewCell
 
-- (void)setupCellForData:(NSManagedObject *)contact;
+- (void)setupWithContact:(NSManagedObject *)contact;
 
 @end

@@ -55,7 +55,7 @@
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        singleton = [[[self class] alloc] init];
+        singleton = [[self alloc] init];
     });
     
     return singleton;

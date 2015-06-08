@@ -25,7 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnImageView;
 @property (weak, nonatomic) IBOutlet UIButton *btnDelete;
 
-@property (strong, nonatomic) CoreDataHelper *coreData;
+@property (weak, nonatomic) CoreDataHelper *coreData;
 @property (assign, nonatomic) BOOL editMode;
 
 @end
