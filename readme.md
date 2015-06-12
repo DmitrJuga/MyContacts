@@ -1,4 +1,4 @@
-# ![MyContacts](https://github.com/DmitrJuga/MyContacts/blob/master/myContacts/Images.xcassets/AppIcon.appiconset/mzl.fbquoxfc-29@2x.png)  Мои контакты / My Contacts
+# ![](https://github.com/DmitrJuga/MyContacts/blob/master/myContacts/Images.xcassets/AppIcon.appiconset/mzl.fbquoxfc-29@2x.png)  Мои контакты / My Contacts
 
 **"Мои контакты"** - простая записная книжка (cписок контактов). Учебный (тренировочный) проект на **Objective-C** c использованием **CoreData**.
 
@@ -30,7 +30,7 @@
 - Auto Layout (Storyboard constraints);   
 
 **Extra:**
-- Launch Screen, App Icon (images from open web sources);
+- Launch Screen, AppIcon (images from free web sources);
 - My own `Utils` class for routine functions like phone number formatting or e-mail validation _(some based on solution examples from [stackoverflow.com] (http://stackoverflow.com/))_.
 
 ## More Screenshots
