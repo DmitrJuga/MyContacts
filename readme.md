@@ -19,7 +19,7 @@
 
 **CoreData framework usage:**
 - CoreData model contain 1 entity (`Сontact`) with 6 attributes (including Binary Data for image);
-- My own `DDCoreDataHelper` class which encapsulats CoreData routines and provides shared instance (singleton)
+- My own `DDCoreDataHelper` class which encapsulats CoreData routines and provides shared instance (singleton);
 - KVC processing CoreData `NSManagedObjects`;   
 
 **UIKit framework usage:**
