@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CoreDataHelper.h"
+#import "DDCoreDataHelper.h"
 
 @interface CustomCell : UITableViewCell
 

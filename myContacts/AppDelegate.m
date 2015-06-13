@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "AppConstants.h"
-#import "CoreDataHelper.h"
+#import "DDCoreDataHelper.h"
 
 @interface AppDelegate ()
 
@@ -21,7 +21,7 @@
     
     // Пример данных
     NSManagedObject *contact;
-    CoreDataHelper *coreData = [CoreDataHelper sharedInstance];
+    DDCoreDataHelper *coreData = [DDCoreDataHelper sharedInstance];
     if ([coreData fetchObjectsForEntity:ENTITY_NAME_CONTACT].count == 0) {
 
         contact = [coreData addObjectForEntity:ENTITY_NAME_CONTACT];

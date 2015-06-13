@@ -8,7 +8,7 @@
 
 #import "AppConstants.h"
 #import "Utils.h"
-#import "CoreDataHelper.h"
+#import "DDCoreDataHelper.h"
 #import "ListViewController.h"
 #import "CustomCell.h"
 #import "DetailsViewController.h"
@@ -17,7 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *arrayContacts;
-@property (weak, nonatomic) CoreDataHelper *coreData;
+@property (weak, nonatomic) DDCoreDataHelper *coreData;
 
 @end
 
@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.coreData = [CoreDataHelper sharedInstance];
+    self.coreData = [DDCoreDataHelper sharedInstance];
     self.arrayContacts = [[NSMutableArray alloc] init];
     self.tableView.tableFooterView = [[UIView alloc] init];
 }

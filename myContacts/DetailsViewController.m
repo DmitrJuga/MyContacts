@@ -25,7 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnImageView;
 @property (weak, nonatomic) IBOutlet UIButton *btnDelete;
 
-@property (weak, nonatomic) CoreDataHelper *coreData;
+@property (weak, nonatomic) DDCoreDataHelper *coreData;
 @property (assign, nonatomic) BOOL editMode;
 
 @end
@@ -34,7 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.coreData = [CoreDataHelper sharedInstance];
+    self.coreData = [DDCoreDataHelper sharedInstance];
     
     // обработчик нажатий (чтобы убирать клавиатуру при нажатии вне полей)
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHandler:)];

@@ -18,9 +18,9 @@
 ## Technical Information
 
 **CoreData framework usage:**
-- CoreData model contain 1 entity (`Сontact`) with 6 attributes (including Binary Data for image storage);
-- Use my own `CoreDataHelper` class providing singleton instance;
-- KVC for processing CoreData `NSManagedObjects`;   
+- CoreData model contain 1 entity (`Сontact`) with 6 attributes (including Binary Data for image);
+- My own `DDCoreDataHelper` class which encapsulats CoreData routines and provides shared instance (singleton)
+- KVC processing CoreData `NSManagedObjects`;   
 
 **UIKit framework usage:**
 - Use 3 `UIViewController`s with Segue transitions + `UINavigationController`;
@@ -31,7 +31,7 @@
 
 **Extra:**
 - Launch Screen, AppIcon (images from free web sources);
-- My own `Utils` class for routine functions like phone number formatting or e-mail validation _(some based on solution examples from [stackoverflow.com] (http://stackoverflow.com/))_.
+- My own `Utils` class for routine functions like phone number formatting or e-mail validation _(some based on solutions from [stackoverflow.com] (http://stackoverflow.com/))_.
 
 ## More Screenshots
 

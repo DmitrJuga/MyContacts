@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CoreDataHelper.h"
+#import "DDCoreDataHelper.h"
 
 @interface DetailsViewController : UITableViewController <UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 

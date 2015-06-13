@@ -1,14 +1,14 @@
 //
-//  CoreDataHelper.m
-//  myContacts
+//  DDCoreDataHelper.m
+//  DDUtils
 //
 //  Created by DmitrJuga on 25.05.15.
 //  Copyright (c) 2015 Dmitriy Dolotenko. All rights reserved.
 //
 
-#import "CoreDataHelper.h"
+#import "DDCoreDataHelper.h"
 
-@interface CoreDataHelper()
+@interface DDCoreDataHelper()
 
 @property (strong, nonatomic) NSManagedObjectModel *model;
 @property (strong, nonatomic) NSPersistentStoreCoordinator *coordinator;
@@ -16,7 +16,7 @@
 
 @end
 
-@implementation CoreDataHelper
+@implementation DDCoreDataHelper
 
 // инициализация стека CoreData
 - (instancetype)init {
@@ -110,3 +110,4 @@
 }
 
 @end
+

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1D80D7D41B19079A00EA724A /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D80D7D31B19079A00EA724A /* Utils.m */; };
 		1D80D7D81B194EDF00EA724A /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D80D7D71B194EDF00EA724A /* ImageViewController.m */; };
+		1DBEC4541B2CA6B600B6FF0F /* DDCoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBEC4531B2CA6B600B6FF0F /* DDCoreDataHelper.m */; };
 		1DF7C8AF1B13B1E200529494 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7C8AE1B13B1E200529494 /* main.m */; };
 		1DF7C8B21B13B1E200529494 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7C8B11B13B1E200529494 /* AppDelegate.m */; };
 		1DF7C8B81B13B1E200529494 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7C8B71B13B1E200529494 /* ListViewController.m */; };
@@ -16,7 +17,6 @@
 		1DF7C8BD1B13B1E200529494 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DF7C8BC1B13B1E200529494 /* Images.xcassets */; };
 		1DF7C8C01B13B1E200529494 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DF7C8BE1B13B1E200529494 /* LaunchScreen.xib */; };
 		1DF7C8D71B13B9CA00529494 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7C8D61B13B9CA00529494 /* CustomCell.m */; };
-		1DF7C8E31B13EF2800529494 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7C8E11B13EF2800529494 /* CoreDataHelper.m */; };
 		1DF7C8E61B13F93100529494 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7C8E51B13F93100529494 /* DetailsViewController.m */; };
 		1DF7C8EA1B1405E100529494 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1DF7C8E81B1405E100529494 /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
@@ -26,6 +26,8 @@
 		1D80D7D31B19079A00EA724A /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = MyContacts/Utils.m; sourceTree = SOURCE_ROOT; };
 		1D80D7D61B194EDF00EA724A /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageViewController.h; path = MyContacts/ImageViewController.h; sourceTree = SOURCE_ROOT; };
 		1D80D7D71B194EDF00EA724A /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageViewController.m; path = MyContacts/ImageViewController.m; sourceTree = SOURCE_ROOT; };
+		1DBEC4521B2CA6B600B6FF0F /* DDCoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCoreDataHelper.h; sourceTree = "<group>"; };
+		1DBEC4531B2CA6B600B6FF0F /* DDCoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCoreDataHelper.m; sourceTree = "<group>"; };
 		1DF7C8A91B13B1E200529494 /* Мои контакты.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Мои контакты.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF7C8AD1B13B1E200529494 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DF7C8AE1B13B1E200529494 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -39,8 +41,6 @@
 		1DF7C8D51B13B9CA00529494 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
 		1DF7C8D61B13B9CA00529494 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
 		1DF7C8DC1B13C1D200529494 /* AppConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppConstants.h; sourceTree = "<group>"; };
-		1DF7C8E11B13EF2800529494 /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
-		1DF7C8E21B13EF2800529494 /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
 		1DF7C8E41B13F93100529494 /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		1DF7C8E51B13F93100529494 /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		1DF7C8E91B1405E100529494 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -134,8 +134,8 @@
 		1DF7C8E01B13C33100529494 /* CoreDataHelper */ = {
 			isa = PBXGroup;
 			children = (
-				1DF7C8E21B13EF2800529494 /* CoreDataHelper.h */,
-				1DF7C8E11B13EF2800529494 /* CoreDataHelper.m */,
+				1DBEC4521B2CA6B600B6FF0F /* DDCoreDataHelper.h */,
+				1DBEC4531B2CA6B600B6FF0F /* DDCoreDataHelper.m */,
 			);
 			name = CoreDataHelper;
 			sourceTree = "<group>";
@@ -219,12 +219,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1DF7C8E31B13EF2800529494 /* CoreDataHelper.m in Sources */,
 				1DF7C8B21B13B1E200529494 /* AppDelegate.m in Sources */,
 				1DF7C8D71B13B9CA00529494 /* CustomCell.m in Sources */,
 				1D80D7D41B19079A00EA724A /* Utils.m in Sources */,
 				1DF7C8EA1B1405E100529494 /* Model.xcdatamodeld in Sources */,
 				1DF7C8E61B13F93100529494 /* DetailsViewController.m in Sources */,
+				1DBEC4541B2CA6B600B6FF0F /* DDCoreDataHelper.m in Sources */,
 				1D80D7D81B194EDF00EA724A /* ImageViewController.m in Sources */,
 				1DF7C8B81B13B1E200529494 /* ListViewController.m in Sources */,
 				1DF7C8AF1B13B1E200529494 /* main.m in Sources */,
