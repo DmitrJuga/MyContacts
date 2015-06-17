@@ -15,23 +15,23 @@
 - Проверка вводимых данных: форматирование номера телефона, валидация e-mail.
 - *В пустую (новую) базу при запуске добавляются 2 тестовых контакта* :)
 
-## Technical Information
+## Technical Details
 
 **CoreData framework usage:**
-- CoreData model contain 1 entity (`Сontact`) with 6 attributes (including Binary Data for image);
-- My own `DDCoreDataHelper` class which encapsulats CoreData routines and provides shared instance (singleton);
-- KVC processing CoreData `NSManagedObjects`;   
+- CoreData model contain 1 entity (`Сontact`) with 6 attributes (including Binary Data for image).
+- My own `DDCoreDataHelper` class which encapsulats CoreData routines and provides shared instance (singleton).
+- KVC processing CoreData `NSManagedObjects`.
 
 **UIKit framework usage:**
-- Use 3 `UIViewController`s with Segue transitions + `UINavigationController`;
-- `UITableViewController` with static cells;
-- `UITableView` with sections and custom cells;
-- `UIImagePickerController` to pick photo for contact;
-- Auto Layout (Storyboard constraints);   
+- Use 3 `UIViewController`s with Segue transitions + `UINavigationController`.
+- `UITableViewController` with static cells.
+- `UITableView` with sections and custom cells.
+- `UIImagePickerController` to pick photo for contact.
+- Auto Layout (Storyboard constraints).
 
 **Extra:**
-- Launch Screen, AppIcon (images from free web sources);
-- My own `Utils` class for routine functions like phone number formatting or e-mail validation _(some based on solutions from [stackoverflow.com] (http://stackoverflow.com/))_.
+- Launch Screen, App Icon (images from free web sources).
+- My own `Utils` class for routine functions like phone number formatting or e-mail validation *(some based on solutions from [stackoverflow.com](http://stackoverflow.com/))*.
 
 ## More Screenshots
 
@@ -43,7 +43,7 @@
 
 ## Основа проекта
 
-Проект создан на основе моей домашней работы к уроку 6 по курсу **"Objective C. Уровень 2"** в [НОЧУ ДО «Школа программирования» (http://geekbrains.ru)](http://geekbrains.ru/). См. домашнее задание и пояснения к выполненой работе в [homework_readme.md](https://github.com/DmitrJuga/MyContacts/blob/master/homework_readme.md).
+Проект создан на основе моей домашней работы к уроку 6 по курсу **"Objective C. Уровень 2"** в НОЧУ ДО «Школа программирования» ([http://geekbrains.ru](http://geekbrains.ru/users/38648)) и доработан после окончания курса. См. домашнее задание и пояснения к выполненой работе в [homework_readme.md](https://github.com/DmitrJuga/MyContacts/blob/master/homework_readme.md).
 
 ---
 
