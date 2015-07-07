@@ -136,10 +136,10 @@
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:ALERT_TITLE
                                                                        message:msg
                                                                 preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
-        [self presentViewController:alert animated:YES completion:^{
+        [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
             [invalidField becomeFirstResponder];
-        }];
+        }]];
+        [self presentViewController:alert animated:YES completion:nil];
         return NO;
     }
     
